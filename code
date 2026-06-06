@@ -1,0 +1,25 @@
+def organizingContainers(container):
+    n = len(container)
+
+    row_sums = [sum(row) for row in container]
+
+    col_sums = []
+    for j in range(n):
+        total = 0
+        for i in range(n):
+            total += container[i][j]
+        col_sums.append(total)
+
+    return "Possible" if sorted(row_sums) == sorted(col_sums) else "Impossible"
+
+
+q = int(input())
+
+for _ in range(q):
+    n = int(input())
+
+    container = []
+    for _ in range(n):
+        container.append(list(map(int, input().split())))
+
+    print(organizingContainers(container))
